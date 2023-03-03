@@ -50,3 +50,12 @@ More examples:
 >>> davinci_functions.list("5 random countries")
 ['Japan', 'Australia', 'Brazil', 'India', 'China']
 ```
+
+Other language (Japanese):
+
+```python
+>>> davinci_functions.list("日本語の単語を5個")
+['日本語', '単語', '文字', '言葉', '意味']
+>>> davinci_functions.list("1から10までの数字のリスト。ただし3で割り切れるときはFizzにしてください。")
+[1, 2, 'Fizz', 4, 5, 'Fizz', 7, 8, 'Fizz', 10]
+```

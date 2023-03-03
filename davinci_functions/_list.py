@@ -56,7 +56,11 @@ def list(prompt: str) -> list[Any]:
             temperature=0,
         )
 
-        answer = response["choices"][0]["text"]
-        return ast.literal_eval(answer)
+        answer = ast.literal_eval(response["choices"][0]["text"])
+        if not isinstance(answer, list):
+            raise ValueError("GPT-3 returned non-list data.")
+
+        return answer
+
     except Exception as e:
         raise RuntimeError("Something went wrong.") from e
