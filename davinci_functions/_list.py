@@ -1,6 +1,7 @@
 """implementation of `list` function."""
 
 import ast
+import builtins
 import openai
 import textwrap
 from typing import Any
@@ -61,7 +62,7 @@ def list(prompt: str) -> list[Any]:
         )
 
         answer = ast.literal_eval(response["choices"][0]["text"])
-        if not isinstance(answer, list):
+        if not isinstance(answer, builtins.list):
             raise ValueError("GPT-3 didn't return a list.")
 
         return answer

@@ -59,6 +59,19 @@ Returns the list of something.
 ['Japan', 'Australia', 'Brazil', 'India', 'China']
 ```
 
+Solving some tasks (e.g., named entity recognition):
+
+```python
+>>> prompt="""
+... Extract all named entities in the following paragraph:
+... 
+... Google is founded by Larry Page and Sergey Brin in 1998.
+... The headquarter is located in Mountain View, Carifornia, United States.
+... """
+>>> davinci_functions.list(prompt)
+['Google', 'Larry Page', 'Sergey Brin', 'Mountain View', 'Carifornia', 'United States']
+```
+
 Other language (Japanese):
 
 ```python
