@@ -39,7 +39,7 @@ def list(prompt: str) -> list[Any]:
         List of 5 random English nouns starting with "a".
 
         ANSWER:
-        ["apple", "alphabet", "ancle", "ant", "art"]
+        ["apple", "alphabet", "ankle", "ant", "art"]
 
         QUESTION:
         {}
