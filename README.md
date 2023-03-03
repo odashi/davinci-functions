@@ -1,5 +1,5 @@
 # davinci-functions
-Library to ask OpenAPI GPT3 for generating Python literals.
+Library to ask OpenAI GPT-3 for generating Python literals.
 
 This library is prepared to record prompts that would be useful for Python programs.
 If you developed something, let's make a pull request!
