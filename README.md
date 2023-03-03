@@ -1,5 +1,8 @@
 # davinci-functions
-Library to ask OpenAPI GPT3 for generating Python literals
+Library to ask OpenAPI GPT3 for generating Python literals.
+
+This library is prepared to record prompts that would be useful for Python programs.
+If you developed something, let's make a pull request!
 
 
 ## Getting started
@@ -59,3 +62,10 @@ Other language (Japanese):
 >>> davinci_functions.list("1から10までの数字のリスト。ただし3で割り切れるときはFizzにしてください。")
 [1, 2, 'Fizz', 4, 5, 'Fizz', 7, 8, 'Fizz', 10]
 ```
+
+
+## Caveats
+
+Right now, this library doesn't consider prompt injection and validity of the returned
+expression by GPT-3. Please don't use this library in the real products that needs to
+take care about consistency and security.
