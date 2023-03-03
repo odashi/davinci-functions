@@ -79,6 +79,8 @@ Other language (Japanese):
 ['日本語', '単語', '文字', '言葉', '意味']
 >>> davinci_functions.list("1から10までの数字のリスト。ただし3で割り切れるときはFizzにしてください。")
 [1, 2, 'Fizz', 4, 5, 'Fizz', 7, 8, 'Fizz', 10]
+>>> davinci_functions.list("「明日は明日の風が吹く」の形態素の一覧")
+['明日', 'は', '明日', 'の', '風', 'が', '吹く']
 ```
 
 ### `davinci_functions.judge`
