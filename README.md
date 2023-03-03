@@ -41,7 +41,12 @@ Dallas
 San Jose
 ```
 
-More examples:
+
+## Functions
+
+### `davinci_functions.list`
+
+Returns the list of something.
 
 ```python
 >>> davinci_functions.list("say hello.")
@@ -61,6 +66,23 @@ Other language (Japanese):
 ['日本語', '単語', '文字', '言葉', '意味']
 >>> davinci_functions.list("1から10までの数字のリスト。ただし3で割り切れるときはFizzにしてください。")
 [1, 2, 'Fizz', 4, 5, 'Fizz', 7, 8, 'Fizz', 10]
+```
+
+### `davinci_functions.judge`
+
+Returns the truth of something.
+
+```python
+>>> davinci_functions.judge("The sum of 2 and 3 is 5.")
+True
+>>> davinci_functions.judge("The sum of 2 and 3 is 6.")
+False
+>>> davinci_functions.judge("San Francisco is the capital of the United States.")
+False
+>>> davinci_functions.judge("New York is the capital of the United States.")
+True  # Wrong answer! This kind of mistakes happens very often: please take care.
+>>> davinci_functions.judge("Washington D.C. is the capital of the United States. How about New York?")
+False
 ```
 
 

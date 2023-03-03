@@ -1,4 +1,4 @@
-"""implementation of `list` function."""
+"""implementation of `judge` function."""
 
 import ast
 import openai
@@ -6,24 +6,24 @@ import textwrap
 from typing import Any
 
 
-def list(prompt: str) -> list[Any]:
-    """Obtains a list of something from GPT-3.
+def judge(prompt: str) -> bool:
+    """Obtains a judgment of something from GPT-3.
 
     Args:
-        prompt: The prompt describing the values.
+        prompt: The prompt describing the question.
             Users basically don't need to write a complete prompt to describe the task
             that the GPT-3 solves.
     
     Returns:
-        A list of something you described in the prompt.
+        A Boolean representing the truth of the given prompt.
         Since this is the result of an LLM, the value may not be correct in many cases.
     
     Raises:
         RuntimeError: Something went wrong.
-
+    
     Example:
-        >>> davinci_functions.list("5 random countries")
-        ['Japan', 'Australia', 'Brazil', 'India', 'China']
+        >>> davinci_functions.judge("San Francisco is the capital of the United States.")
+        False
     """
 
     base_prompt=textwrap.dedent(
@@ -31,19 +31,19 @@ def list(prompt: str) -> list[Any]:
         Complete the following task.
         You must write a single answer to follow the last question.
         Do not output anything else, including programs, description, and remarks.
-        The output must be a Python list of literals.
+        The output must be a Boolean literal in Python: True or False.
 
         QUESTION:
-        The first 5 positive integers.
+        The sum of 2 and 3 is 5.
 
         ANSWER:
-        [1, 2, 3, 4, 5]
+        True
 
         QUESTION:
-        List of 5 random English nouns starting with "a".
+        Antarctica is the largest continent in the world.
 
         ANSWER:
-        ["apple", "alphabet", "ankle", "ant", "art"]
+        False
 
         QUESTION:
         {}
@@ -61,8 +61,8 @@ def list(prompt: str) -> list[Any]:
         )
 
         answer = ast.literal_eval(response["choices"][0]["text"])
-        if not isinstance(answer, list):
-            raise ValueError("GPT-3 didn't return a list.")
+        if not isinstance(answer, bool):
+            raise ValueError("GPT-3 didn't return a Boolean.")
 
         return answer
 
