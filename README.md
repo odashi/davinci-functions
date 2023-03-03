@@ -23,6 +23,7 @@ for val in davinci_functions.list(prompt):
 ```
 
 This script will print something like:
+
 ```
 FizzBuzz
 New York
@@ -35,4 +36,17 @@ San Antonio
 San Diego
 Dallas
 San Jose
+```
+
+More examples:
+
+```python
+>>> davinci_functions.list("say hello.")
+['Hello']
+>>> davinci_functions.list("say hello world.")
+['Hello', 'world']
+>>> davinci_functions.list("Output first 5 prime numbers.")
+[2, 3, 5, 7, 11]
+>>> davinci_functions.list("5 random countries")
+['Japan', 'Australia', 'Brazil', 'India', 'China']
 ```
