@@ -1,5 +1,5 @@
 # davinci-functions
-Library to ask OpenAPI GPT3 for generating Python literals.
+Library to ask OpenAPI GPT for generating Python literals.
 
 This library is prepared to record prompts that would be useful for Python programs.
 If you developed something, let's make a pull request!
@@ -28,7 +28,6 @@ for val in davinci_functions.list(prompt):
 This script will print something like:
 
 ```
-FizzBuzz
 New York
 Los Angeles
 Chicago
@@ -104,5 +103,5 @@ False
 ## Caveats
 
 Right now, this library doesn't consider prompt injection and validity of the returned
-expression by GPT-3. Please don't use this library in the real products that needs to
+expression by GPT. Please don't use this library in the real products that needs to
 take care about consistency and security.

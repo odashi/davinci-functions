@@ -8,12 +8,12 @@ from typing import Any
 
 
 def list(prompt: str) -> list[Any]:
-    """Obtains a list of something from GPT-3.
+    """Obtains a list of something from GPT.
 
     Args:
         prompt: The prompt describing the values.
             Users basically don't need to write a complete prompt to describe the task
-            that the GPT-3 solves.
+            that the GPT solves.
     
     Returns:
         A list of something you described in the prompt.
@@ -63,7 +63,7 @@ def list(prompt: str) -> list[Any]:
 
         answer = ast.literal_eval(response["choices"][0]["text"])
         if not isinstance(answer, builtins.list):
-            raise ValueError("GPT-3 didn't return a list.")
+            raise ValueError("GPT didn't return a list.")
 
         return answer
 
