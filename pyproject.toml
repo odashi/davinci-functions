@@ -46,6 +46,7 @@ dev = [
 mypy = [
     "mypy>=0.991",
     "pytest>=7.1",
+    "pytest-mock>=3.10.0",
 ]
 
 [project.urls]
