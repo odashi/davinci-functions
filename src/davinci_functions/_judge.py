@@ -1,9 +1,9 @@
 """implementation of `judge` function."""
 
 import ast
-import openai
 import textwrap
-from typing import Any
+
+import openai
 
 
 def judge(prompt: str) -> bool:
@@ -13,20 +13,22 @@ def judge(prompt: str) -> bool:
         prompt: The prompt describing the question.
             Users basically don't need to write a complete prompt to describe the task
             that the GPT solves.
-    
+
     Returns:
         A Boolean representing the truth of the given prompt.
         Since this is the result of an LLM, the value may not be correct in many cases.
-    
+
     Raises:
         RuntimeError: Something went wrong.
-    
+
     Example:
-        >>> davinci_functions.judge("San Francisco is the capital of the United States.")
+        >>> davinci_functions.judge(
+        ...     "San Francisco is the capital of the United States."
+        ... )
         False
     """
 
-    base_prompt=textwrap.dedent(
+    base_prompt = textwrap.dedent(
         """\
         Complete the following task.
         You must write a single answer to follow the last question.
@@ -52,19 +54,20 @@ def judge(prompt: str) -> bool:
         """
     )
 
+    response = openai.Completion.create(  # type: ignore[no-untyped-call]
+        model="text-davinci-003",
+        prompt=base_prompt.format(prompt),
+        max_tokens=1024,
+        temperature=0,
+    )
+    text = response["choices"][0]["text"]
+
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=base_prompt.format(prompt),
-            max_tokens=1024,
-            temperature=0,
-        )
+        answer = ast.literal_eval(text)
+    except SyntaxError:
+        raise SyntaxError(f"GPT didn't return a Python literal. {text=}")
 
-        answer = ast.literal_eval(response["choices"][0]["text"])
-        if not isinstance(answer, bool):
-            raise ValueError("GPT didn't return a Boolean.")
+    if not isinstance(answer, bool):
+        raise TypeError(f"GPT didn't return a Python Boolean. {text=}")
 
-        return answer
-
-    except Exception as e:
-        raise RuntimeError("Something went wrong.") from e
+    return answer

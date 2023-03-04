@@ -1,0 +1,78 @@
+[build-system]
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "davinci-functions"
+description = "Library to ask OpenAI GPT for generating Python literals."
+readme = "README.md"
+requires-python = ">=3.9, <3.12"
+license = {text = "MIT License"}
+authors = [
+    {name = "Yusuke Oda", email = "odashi@inspiredco.ai"}
+]
+keywords = [
+    "cloud storage",
+    "gcloud",
+    "google",
+    "google cloud",
+    "storage",
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "openai>=0.27.0",
+]
+dynamic = [
+    "version"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.10",
+    "flake8>=5.0",
+    "isort>=5.10",
+    "mypy>=0.991",
+    "pyproject-flake8>=5.0",
+    "pytest>=7.1",
+    "pytest-mock>=3.10.0",
+]
+mypy = [
+    "mypy>=0.991",
+    "pytest>=7.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/odashi/davinci-functions"
+"Bug Tracker" = "https://github.com/odashi/davinci-functions/issues"
+
+[tool.hatch.build]
+include = [
+    "*.py",
+]
+exclude = [
+    "*_test.py",
+]
+only-packages = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/davinci_functions"]
+
+[tool.hatch.version]
+path = "src/davinci_functions/_version.py"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict = true

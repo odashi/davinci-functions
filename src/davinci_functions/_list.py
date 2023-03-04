@@ -2,32 +2,34 @@
 
 import ast
 import builtins
-import openai
 import textwrap
 from typing import Any
 
+import openai
 
-def list(prompt: str) -> list[Any]:
+
+def list(prompt: str) -> builtins.list[Any]:
     """Obtains a list of something from GPT.
 
     Args:
         prompt: The prompt describing the values.
             Users basically don't need to write a complete prompt to describe the task
             that the GPT solves.
-    
+
     Returns:
         A list of something you described in the prompt.
         Since this is the result of an LLM, the value may not be correct in many cases.
-    
+
     Raises:
-        RuntimeError: Something went wrong.
+        SyntaxError: GPT didn't return a Python literal.
+        TypeError: GPT didn't return a Python list.
 
     Example:
         >>> davinci_functions.list("5 random countries")
         ['Japan', 'Australia', 'Brazil', 'India', 'China']
     """
 
-    base_prompt=textwrap.dedent(
+    base_prompt = textwrap.dedent(
         """\
         Complete the following task.
         You must write a single answer to follow the last question.
@@ -53,19 +55,20 @@ def list(prompt: str) -> list[Any]:
         """
     )
 
+    response = openai.Completion.create(  # type: ignore[no-untyped-call]
+        model="text-davinci-003",
+        prompt=base_prompt.format(prompt),
+        max_tokens=1024,
+        temperature=0,
+    )
+    text = response["choices"][0]["text"]
+
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=base_prompt.format(prompt),
-            max_tokens=1024,
-            temperature=0,
-        )
+        answer = ast.literal_eval(text)
+    except SyntaxError:
+        raise SyntaxError(f"GPT didn't return a Python literal. {text=}")
 
-        answer = ast.literal_eval(response["choices"][0]["text"])
-        if not isinstance(answer, builtins.list):
-            raise ValueError("GPT didn't return a list.")
+    if not isinstance(answer, builtins.list):
+        raise TypeError(f"GPT didn't return a Python list. {text=}")
 
-        return answer
-
-    except Exception as e:
-        raise RuntimeError("Something went wrong.") from e
+    return answer
