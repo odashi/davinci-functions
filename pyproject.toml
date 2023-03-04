@@ -8,7 +8,7 @@ build-backend = "hatchling.build"
 name = "davinci-functions"
 description = "Library to ask OpenAI GPT for generating Python literals."
 readme = "README.md"
-requires-python = ">=3.9, <3.12"
+requires-python = ">=3.8, <3.12"
 license = {text = "MIT License"}
 authors = [
     {name = "Yusuke Oda", email = "odashi@inspiredco.ai"}
@@ -22,6 +22,7 @@ keywords = [
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
