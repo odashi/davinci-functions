@@ -1,5 +1,7 @@
 """Package definition."""
 
+from __future__ import annotations
+
 try:
     from davinci_functions import _version
 

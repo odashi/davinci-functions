@@ -1,5 +1,7 @@
 """implementation of `list` function."""
 
+from __future__ import annotations
+
 import ast
 import builtins
 import textwrap

@@ -1,5 +1,7 @@
 """Tests for davinci_functions._judge."""
 
+from __future__ import annotations
+
 import pytest
 import pytest_mock
 
