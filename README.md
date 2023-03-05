@@ -103,7 +103,7 @@ False
 
 Synthesizes a Python function described in the prompt.
 
-**This function is not secure. Do not use this function in the real products.**
+**This function is not secure. Do not use this function in real products.**
 
 ```python
 >>> f = davinci_functions.function("Multiply the argument x by 2.")
