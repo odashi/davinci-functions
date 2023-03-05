@@ -113,8 +113,8 @@ Synthesizes a Python function described in the prompt.
 >>> f([1, 2, 3])
 2.0
 >>> f = davinci_functions.function("""\
-... Given a list of unique integers x, return two positions that the sum of the numbers
-... on that position is equal to the argument y.
+... Given a list of unique integers x, return two positions so that the sum of the
+... numbers on that positions is equal to the argument y.
 ... The function must be efficient as well as possible.
 ... """)
 >>> f([1, 4, 9, 16, 25], 25)
