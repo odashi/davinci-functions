@@ -99,6 +99,19 @@ True  # Wrong answer! This kind of mistakes happens very often: please take care
 False
 ```
 
+### `davinci_functions.function`
+
+Synthesizes a Python function described in the prompt.
+
+```python
+>>> f = davinci_functions.function("Multiply the argument x by 2.")
+>>> f(3)
+6
+>>> f = davinci_functions.function("Arithmetic mean of all elements in the list x.")
+>>> f([1, 2, 3])
+2.0
+```
+
 
 ## Caveats
 
