@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "davinci-functions"
-description = "Library to ask OpenAI GPT for generating Python literals."
+description = "Library to ask OpenAI GPT for generating objects on the Python runtime."
 readme = "README.md"
 requires-python = ">=3.8, <3.12"
 license = {text = "MIT License"}
