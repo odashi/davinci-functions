@@ -112,6 +112,13 @@ Synthesizes a Python function described in the prompt.
 >>> f = davinci_functions.function("Arithmetic mean of all elements in the list x.")
 >>> f([1, 2, 3])
 2.0
+>>> f = davinci_functions.function("""\
+... Given a list of unique integers x, return two positions that the sum of the numbers
+... on that position is equal to the argument y.
+... The function must be efficient as well as possible.
+... """)
+>>> f([1, 4, 9, 16, 25], 25)
+(3, 2)
 ```
 
 
