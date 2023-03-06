@@ -7,6 +7,16 @@ If you developed something, let's make a pull request!
 
 ## Getting started
 
+### Installation
+
+To install `davinci-functions`, you can simply type the following command:
+
+```shell
+pip instal davinci-functions
+```
+
+### Using the library
+
 Set your OpenAI Organization ID and API key before using this library.
 Then invoke the functions in the library.
 
@@ -41,7 +51,7 @@ San Jose
 ```
 
 
-## Functions
+## References
 
 ### `davinci_functions.list`
 
