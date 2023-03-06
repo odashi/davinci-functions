@@ -1,4 +1,4 @@
-"""implementation of `list` function."""
+"""implementation of `function` function."""
 
 from __future__ import annotations
 
@@ -24,7 +24,8 @@ def function(prompt: str) -> Callable[..., Any]:
         A callable object that may represent the behavior of the prompt.
 
     Raises:
-        SyntaxError: GPT didn't return a Python literal.
+        SyntaxError: GPT didn't return a meaningful Python program.
+        TypeError: GPT didn't return a Python callable.
 
     Example:
         >>> f = davinci_functions.list("Multiply the argument x by 2.")

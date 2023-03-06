@@ -121,6 +121,27 @@ Synthesizes a Python function described in the prompt.
 (3, 2)
 ```
 
+### `davinci_functions.explain`
+
+Describes the behavior of given functions.
+
+```python
+>>> def f(x):
+...     return x * 3
+... 
+>>> davinci_functions.explain(f)
+'This function takes a variable x and multiplies it by 3, then returns the result.'
+>>> def f(a, b, c):
+...     return (-b + math.sqrt(b**2 - 4.0 * a * c)) / (2.0 * a)
+... 
+>>> davinci_functions.explain(f)
+'This function implements the Quadratic Formula to calculate the solution of a ...
+ quadratic equation. The equation is of the form ax^2 + bx + c = 0. The function ...
+ takes three parameters a, b, and c, which are the coefficients of the equation. It ...
+ then calculates the solution using the formula (-b + sqrt(b^2 - 4ac)) / (2a) and ...
+ returns the result.'
+```
+
 
 ## Caveats
 

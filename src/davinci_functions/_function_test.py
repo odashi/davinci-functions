@@ -8,7 +8,7 @@ import pytest_mock
 from davinci_functions._function import function
 
 
-def test_judge_true(mocker: pytest_mock.MockerFixture) -> None:
+def test_function(mocker: pytest_mock.MockerFixture) -> None:
     mocker.patch(
         "openai.Completion.create",
         return_value={"choices": [{"text": "def func(x):\n    return x * 2"}]},
@@ -19,7 +19,7 @@ def test_judge_true(mocker: pytest_mock.MockerFixture) -> None:
     assert f(3) == 6
 
 
-def test_judge_non_python(mocker: pytest_mock.MockerFixture) -> None:
+def test_function_non_python(mocker: pytest_mock.MockerFixture) -> None:
     mocker.patch(
         "openai.Completion.create",
         return_value={"choices": [{"text": "Error."}]},
@@ -29,7 +29,7 @@ def test_judge_non_python(mocker: pytest_mock.MockerFixture) -> None:
         function("This is a test.")
 
 
-def test_judge_non_function(mocker: pytest_mock.MockerFixture) -> None:
+def test_function_non_function(mocker: pytest_mock.MockerFixture) -> None:
     mocker.patch(
         "openai.Completion.create",
         return_value={"choices": [{"text": "func = 42"}]},
